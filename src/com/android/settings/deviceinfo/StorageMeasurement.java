@@ -422,8 +422,7 @@ public class StorageMeasurement {
             }
 
             // Measure misc files not counted under media
-            // we only do this on the HOX for the non-internal storage (= sdcard)
-            if (!mIsInternal) {
+            if (measureMedia) {
                 final File path = mIsInternal ? currentEnv.getExternalStorageDirectory()
                         : mVolume.getPathFile();
                 details.miscSize = measureMisc(imcs, path);
