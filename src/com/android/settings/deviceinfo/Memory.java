@@ -96,7 +96,7 @@ public class Memory extends SettingsPreferenceFragment {
 
         final StorageVolume[] storageVolumes = mStorageManager.getVolumeList();
         for (StorageVolume volume : storageVolumes) {
-            if (!volume.isEmulated()) {
+            if (!volume.isEmulated() || volume.getPath().equals("/storage/emulated/0")) {
                 addCategory(StorageVolumePreferenceCategory.buildForPhysical(context, volume));
             }
         }
