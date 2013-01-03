@@ -4454,7 +4454,7 @@
     <string name="preview_country_title">Country</string>
     <string name="preview_carrier_title">Carrier</string>
 
-        <!-- Quiet hours #CM -->
+    <!-- Quiet hours #CM -->
     <string name="quiet_hours_title">Quiet hours</string>
     <string name="quiet_hours_summary">Configure the hours the device should be quiet</string>
     <string name="quiet_hours_enabled_title">Enable quiet hours</string>
@@ -4519,4 +4519,8 @@
     <string name="ll_reload">Reload current</string>
     <string name="ll_bad_levels">Levels must be increasing</string>
     <string name="ll_num_levels">Set number of levels</string>
+
+    <!-- AOKP specific sound settings
+    <string name="camera_sounds">Camera sounds</string> ** TODO ** -->
+    <string name="safe_headset_volume_title">Safe headset volume</string>
 </resources>
