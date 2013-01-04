@@ -1518,5 +1518,8 @@
             </intent-filter>
         </receiver>
 
+        <!-- CyanogenMod activities Start -->
+        <activity android:name=".LightLevelsActivity" />
+
     </application>
 </manifest>

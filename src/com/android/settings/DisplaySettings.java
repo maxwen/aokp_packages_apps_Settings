@@ -61,7 +61,8 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_NOTIFICATION_PULSE = "notification_pulse";
     private static final String KEY_SCREEN_SAVER = "screensaver";
     private static final String KEY_WIFI_DISPLAY = "wifi_display";
-
+    private static final String KEY_CUSTOM_LIGHT_LEVELS = "light_level_custom";
+    
     private static final int DLG_GLOBAL_CHANGE_WARNING = 1;
 
     private DisplayManager mDisplayManager;
@@ -69,7 +70,8 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private CheckBoxPreference mAccelerometer;
     private WarnedListPreference mFontSizePref;
     private CheckBoxPreference mNotificationPulse;
-
+    private CheckBoxPreference mCustomLightLevels;
+    
     private final Configuration mCurConfig = new Configuration();
     
     private ListPreference mScreenTimeoutPreference;
@@ -93,6 +95,8 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
         addPreferencesFromResource(R.xml.display_settings);
 
+        mCustomLightLevels = (CheckBoxPreference) findPreference(KEY_CUSTOM_LIGHT_LEVELS);
+        
         mAccelerometer = (CheckBoxPreference) findPreference(KEY_ACCELEROMETER);
         mAccelerometer.setPersistent(false);
         if (RotationPolicy.isRotationLockToggleSupported(getActivity())) {
@@ -285,6 +289,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         readFontSizePreference(mFontSizePref);
         updateScreenSaverSummary();
         updateWifiDisplaySummary();
+        updateCustomLightLevelsCheckbox();
     }
 
     private void updateScreenSaverSummary() {
@@ -317,6 +322,11 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         mAccelerometer.setChecked(!RotationPolicy.isRotationLocked(getActivity()));
     }
 
+    private void updateCustomLightLevelsCheckbox() {
+        mCustomLightLevels.setChecked(Settings.System.getInt(getContentResolver(),
+                Settings.System.LIGHT_SENSOR_CUSTOM, 0)!= 0);
+    }
+
     public void writeFontSizePreference(Object objValue) {
         try {
             mCurConfig.fontScale = Float.parseFloat(objValue.toString());
@@ -336,6 +346,17 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             Settings.System.putInt(getContentResolver(), Settings.System.NOTIFICATION_LIGHT_PULSE,
                     value ? 1 : 0);
             return true;
+        } else if(preference == mCustomLightLevels){
+            boolean value = mCustomLightLevels.isChecked();
+            Settings.System.putInt(getContentResolver(), Settings.System.LIGHT_SENSOR_CUSTOM,
+                    value ? 1 : 0);
+            
+            // sent to observers
+            long tag = Settings.System.getLong(getContentResolver(),
+                    Settings.System.LIGHTS_CHANGED, 0) + 1;
+            Settings.System.putLong(getContentResolver(),
+                    Settings.System.LIGHTS_CHANGED, tag);
+
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }

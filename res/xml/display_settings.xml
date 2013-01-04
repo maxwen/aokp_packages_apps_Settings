@@ -23,6 +23,25 @@
                 android:title="@string/brightness"
                 android:dialogTitle="@string/brightness" />
 
+        <!-- custom light levels -->
+        <CheckBoxPreference
+            android:key="light_level_custom"
+            android:title="@string/light_level_custom_title"
+            android:summary="@string/light_level_custom_summary"
+            android:defaultValue="false"/>
+            
+        <!-- Level editor -->
+        <PreferenceScreen
+            android:key="light_level_widget"
+            android:title="@string/light_level_title"
+            android:summary="@string/light_level_summary" 
+            android:dependency="light_level_custom">
+            <intent
+                android:action="android.intent.action.MAIN"
+                android:targetPackage="com.android.settings"
+                android:targetClass="com.android.settings.LightLevelsActivity" />
+        </PreferenceScreen>
+
         <PreferenceScreen
                 android:key="wallpaper"
                 android:title="@string/wallpaper_settings_title"
