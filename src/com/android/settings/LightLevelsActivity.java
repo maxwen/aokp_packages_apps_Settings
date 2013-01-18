@@ -181,21 +181,21 @@ public class LightLevelsActivity extends Activity implements OnClickListener {
             updateButtons();
         } else {
             int id = v.getId();
+            mEditedId = id;
             int value = -1;
-            int min = 0;
-            int max = 0;
+            int[] range = getValidValueRange();
+            if(range == null){
+            	return;
+            }
+            
+            int min = range[0];
+            int max = range[1];
             if (id >= 2000 && id < 3000) {
                 value = mLevels[id - 2000];
-                min = 0;
-                max = mSensorRange;
             } else if (id >= 3000 && id < 4000) {
                 value = mLcdValues[id - 3000];
-                min = mScreenBrightnessMin;
-                max = android.os.PowerManager.BRIGHTNESS_ON;
             } else if (id >= 4000 && id < 5000) {
                 value = mBtnValues[id - 4000];
-                min = 0;
-                max = 1;
             } else {
                 value = -1;
             }
@@ -204,7 +204,6 @@ public class LightLevelsActivity extends Activity implements OnClickListener {
                 mDialog.setMessage(min + " - " + max);
                 mEditor.setText(String.valueOf(value));
                 mEditor.selectAll();
-                mEditedId = id;
                 mDialog.show();
             }
         }
@@ -214,45 +213,73 @@ public class LightLevelsActivity extends Activity implements OnClickListener {
         mSave.setEnabled(mHasChanges);
     }
 
+	private int[] getValidValueRange() {
+        int valLimitHi = android.os.PowerManager.BRIGHTNESS_ON;
+   		try {
+			if (mEditedId >= 2000 && mEditedId < 3000) {
+                int minValue = 0;
+                int maxValue = mSensorRange;
+                Button minValueView = ((Button) findViewById(mEditedId - 1));
+                Button maxValueView = ((Button) findViewById(mEditedId + 1));                
+                if(minValueView!=null){
+                	minValue = Integer.valueOf(minValueView.getText().toString());
+                }
+                if(maxValueView!=null){
+                	maxValue = Integer.valueOf(maxValueView.getText().toString());
+                }
+                return new int[] {minValue, maxValue};
+            } else if (mEditedId >= 3000 && mEditedId < 4000) {
+                int minValue = mScreenBrightnessMin;
+                int maxValue = valLimitHi;
+                TextView minValueView = ((TextView) findViewById(mEditedId - 1));
+                TextView maxValueView = ((TextView) findViewById(mEditedId + 1));
+                if(minValueView!=null){
+                	minValue = Integer.valueOf(minValueView.getText().toString());
+                }
+                if(maxValueView!=null){
+                	maxValue = Integer.valueOf(maxValueView.getText().toString());
+                }
+                return new int[] {minValue, maxValue};
+            } else if (mEditedId >= 4000 && mEditedId < 5000) {
+                int minValue = 0;
+                int maxValue = 1;
+                return new int[] {minValue, maxValue};
+            }
+        } catch (NumberFormatException e) {
+            // Ignore
+        }
+        return null;
+	}
+	
     private void dialogOk() {
         boolean changed = false;
+         
+        int[] range = getValidValueRange();
+        if(range == null){
+        	return;
+        }
+
+        int min = range[0];
+        int max = range[1];
+
         try {
             int value = Integer.valueOf(mEditor.getText().toString());
             int valLimitHi = android.os.PowerManager.BRIGHTNESS_ON;
-            if (mEditedId == -1337) {
-                if (value > 1 && value != (mLevels.length + 1)) {
-                    int[] tmp = new int[value - 1];
-                    System.arraycopy(mLevels, 0, tmp, 0, Math.min(tmp.length, mLevels.length));
-                    mLevels = tmp;
-
-                    tmp = new int[value];
-                    System.arraycopy(mLcdValues, 0, tmp, 0, Math.min(tmp.length, mLcdValues.length));
-                    mLcdValues = tmp;
-
-                    tmp = new int[value];
-                    System.arraycopy(mBtnValues, 0, tmp, 0, Math.min(tmp.length, mBtnValues.length));
-                    mBtnValues = tmp;
-
-                    createEditor();
-                    mHasChanges = true;
-                    updateButtons();
-                }
-            } else if (mEditedId >= 2000 && mEditedId < 3000) {
-                if (value >= 0 && value <= mSensorRange) {
+			if (mEditedId >= 2000 && mEditedId < 3000) {
+                if (value >= min && value <= max) {
                     mLevels[mEditedId - 2000] = value;
                     ((Button) findViewById(mEditedId)).setText(String.valueOf(value));
                     ((TextView) findViewById(mEditedId - 1000)).setText(String.valueOf(value - 1));
                     changed = true;
                 }
             } else if (mEditedId >= 3000 && mEditedId < 4000) {
-                if (value >= 10 && value <= valLimitHi) {
+                if (value >= min && value <= max) {
                     mLcdValues[mEditedId - 3000] = value;
                     ((Button) findViewById(mEditedId)).setText(String.valueOf(value));
                     changed = true;
                 }
             } else if (mEditedId >= 4000 && mEditedId < 5000) {
-                if (value >= android.os.PowerManager.BRIGHTNESS_OFF
-                        && value <= valLimitHi) {
+                if (value >= min && value <= max) {
                     mBtnValues[mEditedId - 4000] = value;
                     ((Button) findViewById(mEditedId)).setText(String.valueOf(value));
                     changed = true;
