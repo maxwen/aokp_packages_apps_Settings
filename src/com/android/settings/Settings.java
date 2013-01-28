@@ -39,6 +39,7 @@ import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.pm.ResolveInfo;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.INetworkManagementService;
@@ -124,7 +125,8 @@ public class Settings extends PreferenceActivity
             R.id.quick_links,
             R.id.rom_control,
             R.id.themes,
-            R.id.advanced_settings
+            R.id.advanced_settings,
+            R.id.launcher_settings
     };
 
     private SharedPreferences mDevelopmentPreferences;
@@ -431,6 +433,23 @@ public class Settings extends PreferenceActivity
             } else if (id == R.id.advanced_settings) {
                 if (!needsAdvancedSettings())
                     target.remove(header);
+            } else if (id == R.id.launcher_settings) {
+                Intent launcherIntent = new Intent(Intent.ACTION_MAIN);
+                launcherIntent.addCategory(Intent.CATEGORY_HOME);
+                launcherIntent.addCategory(Intent.CATEGORY_DEFAULT);
+
+                Intent launcherPreferencesIntent = new Intent(Intent.ACTION_MAIN);
+                launcherPreferencesIntent.addCategory("com.cyanogenmod.category.LAUNCHER_PREFERENCES");
+
+                ActivityInfo defaultLauncher = getPackageManager().resolveActivity(launcherIntent, PackageManager.MATCH_DEFAULT_ONLY).activityInfo;
+                launcherPreferencesIntent.setPackage(defaultLauncher.packageName);
+                ResolveInfo launcherPreferences = getPackageManager().resolveActivity(launcherPreferencesIntent, 0);
+                if (launcherPreferences != null) {
+                    header.intent = new Intent().setClassName(launcherPreferences.activityInfo.packageName,
+                            launcherPreferences.activityInfo.name);
+                } else {
+                    target.remove(header);
+                }
             } else if (id == R.id.wifi_settings) {
                 // Remove WiFi Settings if WiFi service is not available.
                 if (!getPackageManager().hasSystemFeature(PackageManager.FEATURE_WIFI)) {
