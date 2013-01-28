@@ -413,10 +413,12 @@
 
     <!-- Wi-Fi settings. Presented as a list dialog to the user to choose the Wi-Fi region code. -->
     <string-array name="wifi_countrycode_entries">
+        <item>Default</item>
         <item>United States</item>
         <item>Canada, Taiwan</item>
         <item>Germany</item>
         <item>Europe</item>
+        <item>Great Britain</item>
         <item>Japan, Russia</item>
         <item>Australia</item>
         <item>China</item>
@@ -427,9 +429,11 @@
     </string-array>
 
     <string-array name="wifi_countrycode_values" translatable="false">
+        <item></item>
         <item>US</item>
         <item>CA</item>
         <item>DE</item>
+        <item>EU</item>
         <item>GB</item>
         <item>JP</item>
         <item>AU</item>

@@ -116,7 +116,11 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
             ccodePref.setOnPreferenceChangeListener(this);
             String value = mWifiManager.getCountryCode();
             if (value != null) {
-                ccodePref.setValue(value);
+            	if(ccodePref.findIndexOfValue(value)==-1){
+	            	ccodePref.setValue("");
+               	} else {
+                	ccodePref.setValue(value);
+                }
             } else {
                 Log.e(TAG, "Failed to fetch country code");
             }
@@ -195,7 +199,15 @@ public class AdvancedWifiSettings extends SettingsPreferenceFragment
 
         if (KEY_COUNTRY_CODE.equals(key)) {
             try {
-                mWifiManager.setCountryCode((String) newValue, true);
+            	if(((String)newValue).length()==0){
+            		Settings.Global.putString(getContentResolver(),
+                    	Settings.Global.WIFI_COUNTRY_CODE,
+                    	null);
+	                Toast.makeText(getActivity(), R.string.wifi_setting_countrycode_reboot,
+                        Toast.LENGTH_SHORT).show();
+            	} else {
+                	mWifiManager.setCountryCode((String) newValue, true);
+                }
             } catch (IllegalArgumentException e) {
                 Toast.makeText(getActivity(), R.string.wifi_setting_countrycode_error,
                         Toast.LENGTH_SHORT).show();
