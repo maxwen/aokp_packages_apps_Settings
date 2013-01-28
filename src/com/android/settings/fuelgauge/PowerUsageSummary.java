@@ -100,7 +100,7 @@ public class PowerUsageSummary extends PreferenceFragment implements Runnable {
     private int mStatsType = BatteryStats.STATS_SINCE_CHARGED;
 
     private static final int MIN_POWER_THRESHOLD = 5;
-    private static final int MAX_ITEMS_TO_LIST = 10;
+    private static final int MAX_ITEMS_TO_LIST = 15;
 
     private long mStatsPeriod = 0;
     private double mMaxPower = 1;
