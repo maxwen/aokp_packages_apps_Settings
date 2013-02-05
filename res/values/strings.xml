@@ -1691,6 +1691,10 @@
     <string name="checkbox_notification_same_as_incoming_call">Use incoming call volume for notifications</string>
     <!-- Sound settings screen, setting option title-->
     <string name="notification_sound_dialog_title">Choose notification ringtone</string>
+    
+    <string name="alarm_sound_title">Default alarm</string>
+    <string name="alarm_sound_dialog_title">Choose alarm ringtone</string>
+
     <!-- Sound settings screen, setting option name -->
     <string name="media_volume_title">Media</string>
     <!-- Sound settings screen, setting option summary text -->
