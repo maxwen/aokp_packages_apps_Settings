@@ -4545,4 +4545,7 @@
 
     <!-- Launcher settings  -->
     <string name="launcher_settings_title">Launcher</string>
+    
+    <!-- Sprint Tools -->
+    <string name="sprint_tools_title">Sprint Tools</string>
 </resources>
