@@ -1693,7 +1693,7 @@
          the same as the incoming call volume. -->
     <string name="checkbox_notification_same_as_incoming_call">Use incoming call volume for notifications</string>
     <!-- Sound settings screen, setting option title-->    
-    <string name="alarm_sound_title">Default alarm</string>
+    <string name="alarm_sound_title">Default alarm sound</string>
     <string name="alarm_sound_dialog_title">Choose alarm ringtone</string>
     <string name="notification_sound_dialog_title">Default notification sound</string>
     <!-- Sound settings screen, setting option name -->
