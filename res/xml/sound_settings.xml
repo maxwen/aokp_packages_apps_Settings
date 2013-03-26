@@ -119,6 +119,11 @@
             android:summary="@string/volume_adjust_sounds_enable_summary"
             android:persistent="true" />
 
+    <CheckBoxPreference
+            android:key="swap_volume_buttons"
+            android:title="@string/swap_volume_buttons_title"
+            android:summary="@string/swap_volume_buttons_summary" />
+
     <ListPreference
             android:key="emergency_tone"
             android:title="@string/emergency_tone_title"
