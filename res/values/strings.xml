@@ -4541,6 +4541,19 @@
     <string name="camera_sounds">Camera sounds</string> ** TODO ** -->
     <string name="safe_headset_volume_title">Safe headset volume</string>
 
+    <!-- Category title for power sound notification specific Settings.
+         [CHAR LIMIT=40] -->
+    <string name="power_notifications_category_title">Power sounds</string>
+
+    <!-- Sound settings, power notifications enable/disable, setting check box label -->
+    <string name="power_notifications_enable_title">Enable</string>
+    <!-- Sound settings, power notifications vibrate enable/disable, setting check box label -->
+    <string name="power_notifications_vibrate_title">Vibrate</string>
+    <!-- Sound settings, power notifications ringtone selection, preference label -->
+    <string name="power_notifications_ringtone_title">Notification sound</string>
+    <!-- Sound settings, power notifications label for ringtone == none -->
+    <string name="power_notifications_ringtone_silent">Silent</string>
+
     <string name="lockscreen_quick_unlock_control_title">Quick pin unlock</string>
     <string name="lockscreen_quick_unlock_control_summary">Unlock password/pin lockscreen without pressing enter button</string>
 
