@@ -4654,7 +4654,8 @@
     <string name="vibration_title">Phone vibration</string>
     <string name="link_volume_ringtones">Link volumes</string>
     <string name="link_volume_mutes">Link mute states</string>
-
+    <string name="volume_keys_control_ring_stream">Volume keys control ringtone volume</string>
+    
     <!-- Android debugging over WiFi -->
     <string name="adb_over_network">ADB over network</string>
     <string name="adb_over_network_summary">Enable TCP/IP debugging over network interfaces (Wi-Fi, USB networks). This setting is reset on reboot</string>
