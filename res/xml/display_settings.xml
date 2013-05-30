@@ -48,8 +48,7 @@
                 android:summary="@string/auto_brightness_sensitivity_summary"
                 android:persistent="false"
                 android:entries="@array/auto_brightness_sensitivity_entries"
-                android:entryValues="@array/auto_brightness_sensitivity_values" 
-                android:dependency="light_level_custom"/>
+                android:entryValues="@array/auto_brightness_sensitivity_values" />
 
         <PreferenceScreen
                 android:key="wallpaper"
