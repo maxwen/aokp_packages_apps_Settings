@@ -62,7 +62,8 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_SCREEN_SAVER = "screensaver";
     private static final String KEY_WIFI_DISPLAY = "wifi_display";
     private static final String KEY_CUSTOM_LIGHT_LEVELS = "light_level_custom";
-    
+    private static final String KEY_AUTOMATIC_SENSITIVITY = "auto_brightness_sensitivity";
+        
     private static final int DLG_GLOBAL_CHANGE_WARNING = 1;
 
     private DisplayManager mDisplayManager;
@@ -71,7 +72,8 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private WarnedListPreference mFontSizePref;
     private CheckBoxPreference mNotificationPulse;
     private CheckBoxPreference mCustomLightLevels;
-    
+    private ListPreference mAutomaticSensitivity;
+        
     private final Configuration mCurConfig = new Configuration();
     
     private ListPreference mScreenTimeoutPreference;
@@ -97,6 +99,15 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
         mCustomLightLevels = (CheckBoxPreference) findPreference(KEY_CUSTOM_LIGHT_LEVELS);
         
+        mAutomaticSensitivity = (ListPreference) findPreference(KEY_AUTOMATIC_SENSITIVITY);
+        float currentSensitivity = Settings.System.getFloat(resolver,
+            Settings.System.AUTO_BRIGHTNESS_RESPONSIVENESS, 1.0f);
+                    
+        int currentSensitivityInt = (int) (currentSensitivity * 100);
+        mAutomaticSensitivity.setValue(String.valueOf(currentSensitivityInt));
+        updateAutomaticSensityDescription(currentSensitivityInt);
+        mAutomaticSensitivity.setOnPreferenceChangeListener(this);
+                
         mAccelerometer = (CheckBoxPreference) findPreference(KEY_ACCELEROMETER);
         mAccelerometer.setPersistent(false);
         if (RotationPolicy.isRotationLockToggleSupported(getActivity())) {
@@ -371,14 +382,34 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             } catch (NumberFormatException e) {
                 Log.e(TAG, "could not persist screen timeout setting", e);
             }
-        }
-        if (KEY_FONT_SIZE.equals(key)) {
+        } else if (KEY_FONT_SIZE.equals(key)) {
             writeFontSizePreference(objValue);
+        } else if (KEY_AUTOMATIC_SENSITIVITY.equals(key)) {
+            int value = Integer.parseInt((String) objValue);
+            float sensitivity = 0.01f * value;
+
+            Settings.System.putFloat(getContentResolver(),
+                        Settings.System.AUTO_BRIGHTNESS_RESPONSIVENESS, sensitivity);
+
+            updateAutomaticSensityDescription(value);
         }
 
         return true;
     }
 
+    private void updateAutomaticSensityDescription(int value) {
+        String[] sensitivityValues = getResources().getStringArray(
+            R.array.auto_brightness_sensitivity_values);
+
+        for (int i = 0; i < sensitivityValues.length; i++) {
+            if (sensitivityValues[i].equals(String.valueOf(value))) {
+                mAutomaticSensitivity.setSummary(getResources().getStringArray(
+                    R.array.auto_brightness_sensitivity_entries)[i]);
+                break;
+            }
+        }
+    }
+    
     private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
