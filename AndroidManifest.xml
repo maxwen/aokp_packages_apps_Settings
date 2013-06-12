@@ -1603,8 +1603,6 @@
                 android:resource="@id/profiles_settings" />
         </activity-alias>
 
-        <!-- CyanogenMod activities Start -->
-
         <activity android:name=".profiles.ProfileConfig" />
 
         <activity android:name=".profiles.AppGroupList" />
@@ -1626,6 +1624,11 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".profiles.ProfilesAppPicker" android:label="@string/select_application"
+                android:theme="@*android:style/Theme.Holo.Dialog" />
+
+        <!-- Profiles - end -->
+        
         <activity android:name="net.margaritov.preference.colorpicker" />
 
         <receiver android:name=".widget.SettingsAppWidgetProvider"
