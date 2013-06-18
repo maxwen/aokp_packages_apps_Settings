@@ -27,6 +27,12 @@ import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
+import android.media.RingtoneManager;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteException;
+import android.content.Context;
+import android.provider.MediaStore;
+import android.provider.Settings;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
@@ -65,7 +71,7 @@ public class ProfileGroupConfig extends SettingsPreferenceFragment implements
     private ProfileRingtonePreference mSoundTone;
 
     private ProfileManager mProfileManager;
-
+    
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -100,7 +106,7 @@ public class ProfileGroupConfig extends SettingsPreferenceFragment implements
             updateState();
         }
     }
-
+    
     private void updateState() {
 
         mVibrateMode.setValue(mProfileGroup.getVibrateMode().name());
@@ -115,12 +121,13 @@ public class ProfileGroupConfig extends SettingsPreferenceFragment implements
 
         if (mProfileGroup.getSoundOverride() != null) {
             mSoundTone.setRingtone(mProfileGroup.getSoundOverride());
+            updateRingtoneName(mProfileGroup.getSoundOverride(), RingtoneManager.TYPE_NOTIFICATION, mSoundTone);
         }
 
         if (mProfileGroup.getRingerOverride() != null) {
             mRingTone.setRingtone(mProfileGroup.getRingerOverride());
+            updateRingtoneName(mProfileGroup.getRingerOverride(), RingtoneManager.TYPE_RINGTONE, mRingTone);
         }
-
     }
 
     @Override
@@ -145,5 +152,41 @@ public class ProfileGroupConfig extends SettingsPreferenceFragment implements
 
         updateState();
         return true;
+    }
+
+    private void updateRingtoneName(Uri ringtoneUri, int type, ProfileRingtonePreference preference) {
+        if (preference == null) return;
+        Context context = getActivity();
+        if (context == null) return;
+        Uri defaultRingtoneUri = RingtoneManager.getActualDefaultRingtoneUri(context, type);
+        if (type == RingtoneManager.TYPE_NOTIFICATION){
+            if (ringtoneUri.equals(Settings.System.DEFAULT_NOTIFICATION_URI)){
+                ringtoneUri = defaultRingtoneUri;
+            }
+        } else if (type == RingtoneManager.TYPE_RINGTONE){
+            if (ringtoneUri.equals(Settings.System.DEFAULT_RINGTONE_URI)){
+                ringtoneUri = defaultRingtoneUri;
+            }
+        }
+        CharSequence summary = context.getString(com.android.internal.R.string.ringtone_unknown);
+        // Is it a silent ringtone?
+        if (ringtoneUri == null) {
+            summary = context.getString(com.android.internal.R.string.ringtone_silent);
+        } else {
+            // Fetch the ringtone title from the media provider
+            try {
+                Cursor cursor = context.getContentResolver().query(ringtoneUri,
+                        new String[] { MediaStore.Audio.Media.TITLE }, null, null, null);
+                if (cursor != null) {
+                    if (cursor.moveToFirst()) {
+                        summary = cursor.getString(0);
+                    }
+                    cursor.close();
+                }
+            } catch (SQLiteException sqle) {
+                // Unknown title for the ringtone
+            }
+        }
+        preference.setSummary(summary);
     }
 }
