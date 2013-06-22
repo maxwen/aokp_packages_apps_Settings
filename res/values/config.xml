@@ -29,4 +29,6 @@
          very long strings too. -->
     <integer name="maximum_user_dictionary_word_length" translatable="false">48</integer>
 
+	<!-- does the button brightness values only support 0/1 or real brightness values --> 
+	<bool name="button_brightness_state_only">false</bool>
 </resources>

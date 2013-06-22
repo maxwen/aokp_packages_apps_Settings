@@ -61,6 +61,8 @@ public class LightLevelsActivity extends Activity implements OnClickListener {
     private EditText mEditor;
     private Handler mHandler;
     private int mSensorRange=5000;
+    private boolean mButtonValuesStateOnly=false;
+    
     
     // Set to true if the light sensor is enabled.
     private boolean mLightSensorEnabled = true;
@@ -108,7 +110,9 @@ public class LightLevelsActivity extends Activity implements OnClickListener {
                         
         mScreenBrightnessMin=getResources().getInteger(
                 com.android.internal.R.integer.config_screenBrightnessSettingMinimum);
-                
+
+        mButtonValuesStateOnly = getResources().getBoolean(R.bool.button_brightness_state_only);
+        
         mSave = (Button) findViewById(R.id.btn_save);
         mSave.setOnClickListener(this);
         mDefaults = (Button) findViewById(R.id.btn_default);
@@ -241,9 +245,23 @@ public class LightLevelsActivity extends Activity implements OnClickListener {
                 }
                 return new int[] {minValue, maxValue};
             } else if (mEditedId >= 4000 && mEditedId < 5000) {
-                int minValue = 0;
-                int maxValue = 1;
-                return new int[] {minValue, maxValue};
+            	if (mButtonValuesStateOnly){
+                	int minValue = 0;
+                	int maxValue = 1;
+                	return new int[] {minValue, maxValue};
+                } else {
+                    int minValue = mScreenBrightnessMin;
+                    int maxValue = valLimitHi;
+                    TextView minValueView = ((TextView) findViewById(mEditedId - 1));
+                    TextView maxValueView = ((TextView) findViewById(mEditedId + 1));
+                    if(minValueView!=null){
+                	    minValue = Integer.valueOf(minValueView.getText().toString());
+                    }
+                    if(maxValueView!=null){
+                	    maxValue = Integer.valueOf(maxValueView.getText().toString());
+                    }
+                    return new int[] {minValue, maxValue};
+                }
             }
         } catch (NumberFormatException e) {
             // Ignore
