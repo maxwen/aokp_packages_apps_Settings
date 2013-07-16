@@ -47,6 +47,7 @@ import com.android.internal.widget.LockPatternUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Arrays;
 
 /**
  * Gesture lock pattern settings.
@@ -192,10 +193,11 @@ public class SecuritySettings extends SettingsPreferenceFragment
         // lock after preference
         mLockAfter = (ListPreference) root.findPreference(KEY_LOCK_AFTER_TIMEOUT);
         if (mLockAfter != null) {
+            buildExtendedTimeoutList();
             setupLockAfterPreference();
             updateLockAfterPreferenceSummary();
         }
-
+        
         // biometric weak liveliness
         mBiometricWeakLiveliness =
                 (CheckBoxPreference) root.findPreference(KEY_BIOMETRIC_WEAK_LIVELINESS);
@@ -429,6 +431,27 @@ public class SecuritySettings extends SettingsPreferenceFragment
         mLockAfter.setEnabled(revisedEntries.size() > 0);
     }
 
+    private void buildExtendedTimeoutList() {
+        final CharSequence[] entries = mLockAfter.getEntries();
+        final CharSequence[] values = mLockAfter.getEntryValues();
+        
+        CharSequence[] extendedEntries = getResources().getStringArray(R.array.extended_lock_after_timeout_entries);
+        CharSequence[] extendedValues = getResources().getStringArray(R.array.extended_lock_after_timeout_values);
+                
+        ArrayList<CharSequence> revisedEntries = new ArrayList<CharSequence>();
+        revisedEntries.addAll(Arrays.asList(entries));
+        revisedEntries.addAll(Arrays.asList(extendedEntries));
+        
+        ArrayList<CharSequence> revisedValues = new ArrayList<CharSequence>();
+        revisedValues.addAll(Arrays.asList(values));
+        revisedValues.addAll(Arrays.asList(extendedValues));
+
+        mLockAfter.setEntries(
+                revisedEntries.toArray(new CharSequence[revisedEntries.size()]));
+        mLockAfter.setEntryValues(
+                revisedValues.toArray(new CharSequence[revisedValues.size()]));        
+    }
+    
     @Override
     public void onResume() {
         super.onResume();
