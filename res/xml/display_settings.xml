@@ -23,6 +23,11 @@
                 android:title="@string/brightness"
                 android:dialogTitle="@string/brightness" />
 
+        <com.android.settings.ButtonBrightnessPreference
+                android:key="button_brightness"
+                android:title="@string/button_brightness"
+                android:dialogTitle="@string/button_brightness" />
+
         <!-- custom light levels -->
         <CheckBoxPreference
             android:key="light_level_custom"

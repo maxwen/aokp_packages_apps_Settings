@@ -31,4 +31,7 @@
 
 	<!-- does the button brightness values only support 0/1 or real brightness values --> 
 	<bool name="button_brightness_state_only">false</bool>
+	
+	<!-- custom button brightness control for manual mode -->
+    <bool name="button_brightness_custom_value">false</bool>
 </resources>

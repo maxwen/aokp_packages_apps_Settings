@@ -229,6 +229,7 @@ public class BrightnessPreference extends SeekBarDialogPreference implements
                     }
                     if (write) {
                         final ContentResolver resolver = getContext().getContentResolver();
+                        // obsolete!!!
                         Settings.System.putFloat(resolver,
                                 Settings.System.SCREEN_AUTO_BRIGHTNESS_ADJ, valf);
                     }

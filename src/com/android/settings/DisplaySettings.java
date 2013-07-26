@@ -63,6 +63,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_WIFI_DISPLAY = "wifi_display";
     private static final String KEY_CUSTOM_LIGHT_LEVELS = "light_level_custom";
     private static final String KEY_AUTOMATIC_SENSITIVITY = "auto_brightness_sensitivity";
+    private static final String KEY_BUTTON_BRIGHTNESS = "button_brightness";
         
     private static final int DLG_GLOBAL_CHANGE_WARNING = 1;
 
@@ -73,6 +74,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private CheckBoxPreference mNotificationPulse;
     private CheckBoxPreference mCustomLightLevels;
     private ListPreference mAutomaticSensitivity;
+    private ButtonBrightnessPreference mButtonBrightness;
         
     private final Configuration mCurConfig = new Configuration();
     
@@ -81,6 +83,8 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
     private WifiDisplayStatus mWifiDisplayStatus;
     private Preference mWifiDisplayPreference;
+    
+    private boolean mCustomButtonBrightnessSupport = false;
 
     private final RotationPolicy.RotationPolicyListener mRotationPolicyListener =
             new RotationPolicy.RotationPolicyListener() {
@@ -97,6 +101,12 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
         addPreferencesFromResource(R.xml.display_settings);
 
+        mCustomButtonBrightnessSupport = getResources().getBoolean(R.bool.button_brightness_custom_value);
+        mButtonBrightness = (ButtonBrightnessPreference) findPreference(KEY_BUTTON_BRIGHTNESS);
+        if (mButtonBrightness != null && !mCustomButtonBrightnessSupport){
+            getPreferenceScreen().removePreference(mButtonBrightness);
+        }
+        
         mCustomLightLevels = (CheckBoxPreference) findPreference(KEY_CUSTOM_LIGHT_LEVELS);
         
         mAutomaticSensitivity = (ListPreference) findPreference(KEY_AUTOMATIC_SENSITIVITY);
