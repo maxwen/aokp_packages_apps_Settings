@@ -206,6 +206,11 @@ public class SoundSettings extends SettingsPreferenceFragment implements
             findPreference(KEY_RING_VOLUME).setDependency(null);
         }
 
+        if (getResources().getBoolean(com.android.internal.R.bool.config_useFixedVolume)) {
+            // device with fixed volume policy, do not display volumes submenu
+            getPreferenceScreen().removePreference(findPreference(KEY_RING_VOLUME));
+        }
+
         mVibrateWhenRinging = (CheckBoxPreference) findPreference(KEY_VIBRATE);
         mVibrateWhenRinging.setPersistent(false);
         mVibrateWhenRinging.setChecked(Settings.System.getInt(resolver,
@@ -272,6 +277,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements
             removePreference(KEY_HAPTIC_FEEDBACK);
             removePreference(KEY_VIBRATION);
         }
+
         if (!Utils.isVoiceCapable(getActivity())) {
             removePreference(KEY_VIBRATE);
             removePreference(KEY_VIBRATION);
