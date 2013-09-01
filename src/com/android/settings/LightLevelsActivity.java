@@ -105,7 +105,7 @@ public class LightLevelsActivity extends Activity implements OnClickListener {
         setContentView(R.layout.lightlevels);
         mHandler = new Handler();
         
-        mSensorManager = new SystemSensorManager(mHandler.getLooper());
+        mSensorManager = new SystemSensorManager(this, mHandler.getLooper());
         mLightSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
                         
         mScreenBrightnessMin=getResources().getInteger(
