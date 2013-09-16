@@ -1907,4 +1907,7 @@
     <string name="link_volume_ringtones">Lier le volume des alertes à la sonnerie</string>
     <string name="link_volume_mutes">Silence commun pour alertes et sonnerie</string>
     <string name="volume_keys_control_ring_stream">Les boutons de volume contrôlent le volume de la sonnerie</string>
+    <string name="swap_volume_buttons_title">Boutons volume inversés</string>
+    <string name="swap_volume_buttons_summary">Inverser les boutons volume lorsque l\'écran est tourné</string>
+
 </resources>

@@ -1949,4 +1949,10 @@ som ikke kompromitterer dit privatliv eller personlige data. Dataene indsendes e
     <string name="user_image_take_photo" msgid="1280274310152803669">"Tag billede"</string>
     <string name="user_image_choose_photo" msgid="7940990613897477057">"Vælg billede fra Galleri"</string>
     <string name="regulatory_info_text" msgid="5623087902354026557"></string>
+    <string name="link_volume_ringtones">Forbind ringe- og meddelelseslydstyrke</string>
+    <string name="link_volume_mutes">Forbind lydløs ringe- og meddelelseslydstyrke</string>
+    <string name="volume_keys_control_ring_stream">Lydstyrkeknapper styrer ringelydstyrke</string>
+    <string name="swap_volume_buttons_title">Ombyt lydstyrkeknapper</string>
+    <string name="swap_volume_buttons_summary">Ombyt lydstyrkeknapper, når skærmen roteres</string>
+
 </resources>

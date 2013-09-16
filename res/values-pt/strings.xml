@@ -1902,4 +1902,9 @@
     <string name="user_image_take_photo" msgid="1280274310152803669">"Tirar foto"</string>
     <string name="user_image_choose_photo" msgid="7940990613897477057">"Escolher foto da Galeria"</string>
     <string name="regulatory_info_text" msgid="5623087902354026557"></string>
+    <string name="swap_volume_buttons_title">Inverter botões de volume</string>
+    <string name="swap_volume_buttons_summary">Inverter botões de volume quando virar a tela</string>
+    <string name="link_volume_ringtones">Unir volumes de toques e notificações</string>
+    <string name="link_volume_mutes">Modo silencioso afeta as notificações</string>
+    <string name="volume_keys_control_ring_stream">Botões de volume controlam o volume do toque</string>
 </resources>

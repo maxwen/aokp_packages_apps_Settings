@@ -1905,4 +1905,7 @@
     <string name="link_volume_ringtones">Vincular volúmenes</string>
     <string name="link_volume_mutes">Vincular silencio</string>
     <string name="volume_keys_control_ring_stream">Controlar volumen de llamada</string>
+    <string name="swap_volume_buttons_title">Intercambiar botones</string>
+    <string name="swap_volume_buttons_summary">Intercambiar los botones de control de volumen al rotar la pantalla</string>
+
 </resources>

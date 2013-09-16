@@ -2082,4 +2082,7 @@
     <string name="user_image_take_photo" msgid="1280274310152803669">"写真を撮影"</string>
     <string name="user_image_choose_photo" msgid="7940990613897477057">"ギャラリーから画像を選ぶ"</string>
     <string name="regulatory_info_text" msgid="5623087902354026557"></string>
+    <string name="swap_volume_buttons_title">音量ボタンを入れ替える</string>
+    <string name="swap_volume_buttons_summary">画面を回転させているとき、音量ボタンを入れ替える</string>
+
 </resources>

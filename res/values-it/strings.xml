@@ -1905,4 +1905,6 @@
     <string name="link_volume_ringtones">Collega volume suoneria e notifiche</string>
     <string name="link_volume_mutes">Collega silenz. suoneria e notifiche</string>
     <string name="volume_keys_control_ring_stream">I tasti volume regolano la suoneria</string>
+    <string name="swap_volume_buttons_title">Scambia tasti volume</string>
+    <string name="swap_volume_buttons_summary">Scambia i tasti del volume quando lo schermo è ruotato</string>
 </resources>

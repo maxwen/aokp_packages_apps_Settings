@@ -1902,4 +1902,10 @@
     <string name="user_image_take_photo" msgid="1280274310152803669">"Vytvoriť fotografiu"</string>
     <string name="user_image_choose_photo" msgid="7940990613897477057">"Vybrať fotografiu z Galérie"</string>
     <string name="regulatory_info_text" msgid="5623087902354026557"></string>
+    <string name="swap_volume_buttons_title">Prevrátiť tlačidlá hlasitosti</string>
+    <string name="swap_volume_buttons_summary">Po otočení obrazovky prevrátiť tlačidlá hlasitosti</string>
+    <string name="link_volume_ringtones">Prepojiť hlasitosti vyzváňania a upozornení</string>
+    <string name="link_volume_mutes">Tichý režim ovplyvňuje upozornenia</string>
+    <string name="volume_keys_control_ring_stream">Tlačidlá hlasitosti ovládajú hlasitosť vyzváňania</string>
+
 </resources>

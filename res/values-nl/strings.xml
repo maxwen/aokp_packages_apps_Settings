@@ -1902,4 +1902,10 @@
     <string name="user_image_take_photo" msgid="1280274310152803669">"Foto maken"</string>
     <string name="user_image_choose_photo" msgid="7940990613897477057">"Foto kiezen in Galerij"</string>
     <string name="regulatory_info_text" msgid="5623087902354026557"></string>
+    <string name="swap_volume_buttons_title">Volumeknoppen omdraaien</string>
+    <string name="swap_volume_buttons_summary">Volumeknoppen omdraaien indien het scherm gedraaid is</string>
+    <string name="link_volume_ringtones">Volumes linken</string>
+    <string name="link_volume_mutes">Stille standen linken</string>
+    <string name="volume_keys_control_ring_stream">Volumeknoppen passen beltoonvolume aan</string>
+
 </resources>

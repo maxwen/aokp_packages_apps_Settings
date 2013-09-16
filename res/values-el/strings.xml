@@ -1902,4 +1902,10 @@
     <string name="user_image_take_photo" msgid="1280274310152803669">"Λήψη φωτογραφίας"</string>
     <string name="user_image_choose_photo" msgid="7940990613897477057">"Επιλογή φωτογραφιών από τη Συλλογή"</string>
     <string name="regulatory_info_text" msgid="5623087902354026557"></string>
+    <string name="link_volume_ringtones">Σύνδεση εντάσεων</string>
+    <string name="link_volume_mutes">Σίγαση ειδοποιήσεων στο Αθόρυβο</string>
+    <string name="volume_keys_control_ring_stream">Έλεγχος έντασης κλήσης με πλήκτρα ήχου</string>
+    <string name="swap_volume_buttons_title">Εναλλαγή πλήκτρων έντασης</string>
+    <string name="swap_volume_buttons_summary">Εναλλαγή των πλήκτρων έντασης κατά την περιστροφή της οθόνης</string>
+
 </resources>

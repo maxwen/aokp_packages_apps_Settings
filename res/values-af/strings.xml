@@ -1902,4 +1902,6 @@
     <string name="user_image_take_photo" msgid="1280274310152803669">"Neem foto"</string>
     <string name="user_image_choose_photo" msgid="7940990613897477057">"Kies foto vanuit galery"</string>
     <string name="regulatory_info_text" msgid="5623087902354026557"></string>
+    <string name="swap_volume_buttons_title">Ruil volume knoppies om</string>
+    <string name="swap_volume_buttons_summary">Ruil volume knoppies om wanneer die skerm geroteer word</string>
 </resources>
