@@ -80,6 +80,8 @@ public class WirelessSettings extends SettingsPreferenceFragment
     private static final String SAVED_MANAGE_MOBILE_PLAN_MSG = "mManageMobilePlanMessage";
 
     private String mManageMobilePlanMessage;
+    private static final String CONNECTED_TO_PROVISIONING_NETWORK_ACTION
+            = "com.android.server.connectivityservice.CONNECTED_TO_PROVISIONING_NETWORK_ACTION";
 
     /**
      * Invoked on each preference click in this hierarchy, overrides
