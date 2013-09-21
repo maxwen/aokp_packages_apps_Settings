@@ -1151,7 +1151,7 @@
     <string-array name="silent_mode_entries">
         <item>Off</item>
         <item>Vibrate</item>
-        <item>Mute</item>
+        <item>Silent</item>
     </string-array>
 
     <!-- Values for Silent mode. Do not translate. -->
