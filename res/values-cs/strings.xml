@@ -1881,6 +1881,7 @@
     <string name="user_picture_title" msgid="7297782792000291692">"ID fotografie"</string>
     <string name="cell_broadcast_settings" msgid="8415582011920085222">"Hromadné zasílání zpráv v rámci buňky"</string>
     <string name="cell_broadcast_settings_summary" msgid="3301339398950905913">"Vyberte typy mimořádných upozornění, která chcete zobrazovat."</string>
+    
     <string name="hardware_info">Informace o hardwaru</string>
     <string name="device_rear_camera">Zadní kamera</string>
     <string name="device_front_camera">Přední kamera</string>
@@ -2023,5 +2024,4 @@
     <string name="regulatory_info_text" msgid="5623087902354026557"></string>
     <string name="swap_volume_buttons_title">Převrátit tlačítka hlasistosti</string>
     <string name="swap_volume_buttons_summary">V případě otočení obrazovky bude převrácen i smysl tlačítek hlasitosti</string>
-
 </resources>
