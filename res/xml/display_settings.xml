@@ -18,42 +18,13 @@
         android:title="@string/display_settings"
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
-        <com.android.settings.BrightnessPreference
-                android:key="brightness"
+        <!--<com.android.settings.BrightnessPreference
                 android:title="@string/brightness"
-                android:dialogTitle="@string/brightness" />
+                android:persistent="false"/>-->
 
-        <com.android.settings.ButtonBrightnessPreference
-                android:key="button_brightness"
-                android:title="@string/button_brightness"
-                android:dialogTitle="@string/button_brightness" />
-
-        <!-- custom light levels -->
-        <CheckBoxPreference
-            android:key="light_level_custom"
-            android:title="@string/light_level_custom_title"
-            android:summary="@string/light_level_custom_summary"
-            android:defaultValue="false"/>
-            
-        <!-- Level editor -->
         <PreferenceScreen
-            android:key="light_level_widget"
-            android:title="@string/light_level_title"
-            android:summary="@string/light_level_summary" 
-            android:dependency="light_level_custom">
-            <intent
-                android:action="android.intent.action.MAIN"
-                android:targetPackage="com.android.settings"
-                android:targetClass="com.android.settings.LightLevelsActivity" />
-        </PreferenceScreen>
-
-        <ListPreference
-                android:key="auto_brightness_sensitivity"
-                android:title="@string/auto_brightness_sensitivity_title"
-                android:summary="@string/auto_brightness_sensitivity_summary"
-                android:persistent="false"
-                android:entries="@array/auto_brightness_sensitivity_entries"
-                android:entryValues="@array/auto_brightness_sensitivity_values" />
+                android:title="@string/brightness"
+                android:fragment="com.android.settings.brightness.BrightnessSettings" />
 
         <PreferenceScreen
                 android:key="wallpaper"

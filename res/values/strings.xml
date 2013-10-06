@@ -1853,8 +1853,6 @@
     <string name="accelerometer_summary_off" product="default">Switch orientation automatically when rotating phone</string>
     <!-- Sound & display settings screen, setting option name to change brightness -->
     <string name="brightness">Brightness</string>
-    <!-- Sound & display settings screen, setting option name to change brightness -->
-    <string name="button_brightness">Button brightness</string>
 
     <!-- Sound & display settings screen, setting option summary to change brightness -->
     <string name="brightness_summary">Adjust the brightness of the screen</string>
@@ -4656,29 +4654,6 @@
     <!-- Warning for Adb over Network -->
     <string name="adb_over_network_warning">WARNING: When ADB over network is enabled, your phone is open for intrusions on all connected networks, including GSM data network!\n\nOnly use this feature when you are connected on trusted networks.\n\nDo you really want to enable this function?</string>
 
-    <!-- custom light levels -->
-    <string name="light_level_custom_title">Use custom</string>
-    <string name="light_level_custom_summary">Use custom lights levels for automatic screen brightness</string>
-
-    <string name="light_level_title">Light levels</string>
-    <string name="light_level_summary">Customize light levels</string>
-
-    <!-- Light sensor levels  -->
-    <string name="ll_title">Light sensor levels</string>
-    <string name="ll_header_upper">Upper</string>
-    <string name="ll_header_lower">Lower</string>
-    <string name="ll_header_lcd">Screen</string>
-    <string name="ll_header_btn">Buttons</string>
-    <string name="ll_lux">Sensor:</string>
-    <string name="ll_lcd">Screen:</string>
-    <string name="ll_btn">Buttons:</string>
-    <string name="ll_disabled">disabled</string>
-    <string name="ll_default">Load defaults</string>
-    <string name="ll_save">Save &amp; apply</string>
-    <string name="ll_reload">Reload current</string>
-    <string name="ll_bad_levels">Levels must be increasing</string>
-    <string name="ll_num_levels">Set number of levels</string>
-
     <!-- AOKP specific sound settings
     <string name="camera_sounds">Camera sounds</string> ** TODO ** -->
     <string name="safe_headset_volume_title">Safe headset volume</string>
@@ -4743,6 +4718,41 @@
     <string name="auto_brightness_sensitivity_medium">Medium</string>
     <string name="auto_brightness_sensitivity_high">High</string>
     <string name="auto_brightness_sensitivity_veryhigh">Very high</string>
+
+    <string name="screen_brightness_category">Screen</string>
+    <string name="screen_auto_brightness">Automatic levels</string>
+    <string name="screen_auto_brighness_summary">Screen brightness levels for automatic mode</string>
+    <string name="button_auto_brightness">Automatic levels</string>
+    <string name="button_auto_brighness_summary">Button brightness levels for automatic mode</string>
+    <string name="button_brightness_category">Buttons</string>
+    <string name="button_no_brightness">Dark mode</string>
+    <string name="button_no_brightness_summary">Dont set button brightness</string>
+    <string name="button_link_brightness">Link to screen</string>
+    <string name="button_link_brightness_summary">Buttons brightness will use the same value as the screen</string>
+    <string name="button_manual_brightness">Manual level</string>
+    <string name="button_manual_brightness_summary">Button brightness level for manual mode</string>
+    <string name="dialog_manual_brightness_title">Button brightness</string>
+    <!-- Automatic brightness customization -->
+    <string name="auto_brightness_setup_title">Automatic brightness</string>
+    <string name="light_sensor_current_value">Current light sensor value: <xliff:g id="light_level">%d</xliff:g> lux</string>
+    <string name="auto_brightness_dialog_title">Automatic brightness levels</string>
+    <string name="auto_brightness_level_format"><xliff:g id="level">%1$d</xliff:g></string>
+    <string name="auto_brightness_last_level_format"><xliff:g id="level">%1$d</xliff:g>+</string>
+    <string name="auto_brightness_adjust_button">Adjust</string>
+    <string name="auto_brightness_close_button">Close</string>
+    <string name="auto_brightness_reset_button">Reset</string>
+    <string name="auto_brightness_split_dialog_title">Split brightness level</string>
+    <string name="auto_brightness_level_dialog_title">Brightness level</string>
+    <string name="auto_brightness_lux">Ambient brightness (lux)</string>
+    <string name="auto_brightness_backlight">Brightness</string>
+    <string name="auto_brightness_reset_dialog_title">Reset levels?</string>
+    <string name="auto_brightness_reset_confirmation">All brightness levels will be reset to their default settings.</string>
+    <string name="auto_brightness_split_lux_format">Split position (between <xliff:g id="min">%1$d</xliff:g> and <xliff:g id="max">%2$d</xliff:g> lux)</string>
+    <string name="auto_brightness_level_options">Light level options</string>
+    <string name="auto_brightness_menu_edit">Edit</string>
+    <string name="auto_brightness_menu_split">Split</string>
+    <string name="auto_brightness_menu_remove">Remove</string>
+    <string name="sensor_category">Sensor</string>
 
     <!-- Profiles settings  -->
     <string name="profiles_settings_title">Profiles</string>
