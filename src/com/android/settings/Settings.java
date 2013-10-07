@@ -454,6 +454,9 @@ public class Settings extends PreferenceActivity
                 } else {
                     target.remove(header);
                 }
+            } else if (id == R.id.ussd_dialer) {
+                if (!needsUssdDialer())
+                    target.remove(header);
             } else if (id == R.id.sprint_tools) {
                 if (!isSprintDevice())
                     target.remove(header);
@@ -579,6 +582,10 @@ public class Settings extends PreferenceActivity
 
     private boolean needsAdvancedSettings() {
         return getResources().getBoolean(R.bool.has_advanced_settings);
+    }
+
+    private boolean needsUssdDialer() {
+        return getResources().getBoolean(R.bool.needs_ussd_dialer);
     }
 
     private boolean isSprintDevice() {
