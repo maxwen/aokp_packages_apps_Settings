@@ -1195,6 +1195,11 @@ public class DevelopmentSettings extends PreferenceFragment
                     (BatteryManager.BATTERY_PLUGGED_AC | BatteryManager.BATTERY_PLUGGED_USB) : 0);
                   
             mDimScreenWhilePLugged.setEnabled(mKeepScreenOn.isChecked());
+            if (!mKeepScreenOn.isChecked()){
+                mDimScreenWhilePLugged.setChecked(false);
+                Settings.Global.putInt(getActivity().getContentResolver(),
+                        Settings.Global.DIM_SCREEN_WHILE_PLUGGED_IN, 0);
+            }
         } else if (preference == mDimScreenWhilePLugged) {
             Settings.Global.putInt(getActivity().getContentResolver(),
                     Settings.Global.DIM_SCREEN_WHILE_PLUGGED_IN,
